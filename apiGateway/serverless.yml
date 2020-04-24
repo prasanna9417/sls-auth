@@ -1,0 +1,28 @@
+org: prasanna9417
+app: serverless-auth
+service: sls-shared-gateway
+provider:
+  name: aws
+  runtime: nodejs12.x
+  region: us-east-1
+  logs:
+    restApi: true
+resources:
+  Resources:
+    SLSSharedGW:
+      Type: AWS::ApiGateway::RestApi
+      Properties:
+        Name: SLSSharedGW
+  Outputs:
+    apiGatewayRestApiId:
+      Value:
+        Ref: SLSSharedGW
+      Export:
+        Name: SLSSharedGW-restApiId
+    apiGatewayRestApiRootResourceId:
+      Value:
+        Fn::GetAtt:
+          - SLSSharedGW
+          - RootResourceId
+      Export:
+        Name: SLSSharedGW-rootResourceId
