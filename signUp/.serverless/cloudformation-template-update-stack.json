@@ -56,10 +56,10 @@
         }
       }
     },
-    "CreateUserLogGroup": {
+    "SignUpLogGroup": {
       "Type": "AWS::Logs::LogGroup",
       "Properties": {
-        "LogGroupName": "/aws/lambda/sls-auth-signUp-dev-createUser"
+        "LogGroupName": "/aws/lambda/sls-auth-signUp-dev-signUp"
       }
     },
     "IamRoleLambdaExecution": {
@@ -183,7 +183,7 @@
                   "Resource": [
                     {
                       "Fn::GetAtt": [
-                        "CreateUserLogGroup",
+                        "SignUpLogGroup",
                         "Arn"
                       ]
                     }
@@ -195,17 +195,17 @@
         ]
       }
     },
-    "CreateUserLambdaFunction": {
+    "SignUpLambdaFunction": {
       "Type": "AWS::Lambda::Function",
       "Properties": {
         "Code": {
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/sls-auth-signUp/dev/1587651714343-2020-04-23T14:21:54.343Z/sls-auth-signUp.zip"
+          "S3Key": "serverless/sls-auth-signUp/dev/1587943644053-2020-04-26T23:27:24.053Z/sls-auth-signUp.zip"
         },
-        "FunctionName": "sls-auth-signUp-dev-createUser",
-        "Handler": "s_createUser.handler",
+        "FunctionName": "sls-auth-signUp-dev-signUp",
+        "Handler": "s_signUp.handler",
         "MemorySize": 1024,
         "Role": {
           "Fn::GetAtt": [
@@ -217,18 +217,18 @@
         "Timeout": 6
       },
       "DependsOn": [
-        "CreateUserLogGroup",
+        "SignUpLogGroup",
         "IamRoleLambdaExecution"
       ]
     },
-    "CreateUserLambdaVersionlBxqmUDTkm1dlbouDQTQU1fcA8lbg0Z4s0l9o6Pmg": {
+    "SignUpLambdaVersiona3WDfBFeRJgkNmEpFpl4TVQ7qXXT5Bdr977XKWwkI0": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
-          "Ref": "CreateUserLambdaFunction"
+          "Ref": "SignUpLambdaFunction"
         },
-        "CodeSha256": "iheJrwrMS+qGypxBI8Oa9pJ3a1AF7GZhPqDrehDYS8o="
+        "CodeSha256": "/4PQ4256SBk6Ojh4pUuXOJqjczlMd4Mp7QgOxXdWias="
       }
     },
     "ApiGatewayResourceSignup": {
@@ -319,7 +319,7 @@
                 ":lambda:path/2015-03-31/functions/",
                 {
                   "Fn::GetAtt": [
-                    "CreateUserLambdaFunction",
+                    "SignUpLambdaFunction",
                     "Arn"
                   ]
                 },
@@ -331,7 +331,7 @@
         "MethodResponses": []
       }
     },
-    "ApiGatewayDeployment1587651706291": {
+    "ApiGatewayDeployment1587943636324": {
       "Type": "AWS::ApiGateway::Deployment",
       "Properties": {
         "RestApiId": {
@@ -344,12 +344,12 @@
         "ApiGatewayMethodSignupPost"
       ]
     },
-    "CreateUserLambdaPermissionApiGateway": {
+    "SignUpLambdaPermissionApiGateway": {
       "Type": "AWS::Lambda::Permission",
       "Properties": {
         "FunctionName": {
           "Fn::GetAtt": [
-            "CreateUserLambdaFunction",
+            "SignUpLambdaFunction",
             "Arn"
           ]
         },
@@ -490,7 +490,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/sls-auth-signUp/dev/1587651714343-2020-04-23T14:21:54.343Z/custom-resources.zip"
+          "S3Key": "serverless/sls-auth-signUp/dev/1587943644053-2020-04-26T23:27:24.053Z/custom-resources.zip"
         },
         "FunctionName": "sls-auth-signUp-dev-custom-resource-apigw-cw-role",
         "Handler": "apiGatewayCloudWatchRole/handler.handler",
@@ -508,13 +508,13 @@
         "IamRoleCustomResourcesLambdaExecution"
       ]
     },
-    "CloudWatchLogsSubscriptionFilterCreateUserLogGroup": {
+    "CloudWatchLogsSubscriptionFilterSignUpLogGroup": {
       "Type": "AWS::Logs::SubscriptionFilter",
       "Properties": {
         "DestinationArn": "arn:aws:logs:us-east-1:802587217904:destination:0qynJP3sbnMH6Pj8yK#kg7b8rGN6fwpZlvfCz#sls-auth-signUp#dev",
         "FilterPattern": "?\"REPORT RequestId: \" ?\"SERVERLESS_ENTERPRISE\"",
         "LogGroupName": {
-          "Ref": "CreateUserLogGroup"
+          "Ref": "SignUpLogGroup"
         }
       }
     },
@@ -543,10 +543,10 @@
         ]
       }
     },
-    "CreateUserLambdaFunctionQualifiedArn": {
+    "SignUpLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "CreateUserLambdaVersionlBxqmUDTkm1dlbouDQTQU1fcA8lbg0Z4s0l9o6Pmg"
+        "Ref": "SignUpLambdaVersiona3WDfBFeRJgkNmEpFpl4TVQ7qXXT5Bdr977XKWwkI0"
       }
     },
     "ServiceEndpoint": {

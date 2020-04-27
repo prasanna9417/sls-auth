@@ -1,0 +1,37 @@
+org: prasanna9417
+app: serverless-auth
+service: sls-auth-changePassword
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  region: us-east-1
+  apiGateway:
+    restApiId:
+      "Fn::ImportValue": SLSSharedGW-restApiId
+    restApiRootResourceId:
+      "Fn::ImportValue": SLSSharedGW-rootResourceId
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - dynamodb:Query
+        - dynamodb:Scan
+        - dynamodb:GetItem
+        - dynamodb:PutItem
+        - dynamodb:UpdateItem
+        - dynamodb:DeleteItem
+      Resource: "*"
+
+functions:
+  changePassword-authorizer:
+    handler: authorizer/index.handler
+  changePassword:
+    handler: lambda/index.changePassword
+    events:
+      - http:
+          path: changepassword
+          method: post
+          cors: true
+          authorizer: changePassword-authorizer
+
+ 

@@ -92,10 +92,10 @@
               }
             }
           },
-          "CreateUserLogGroup": {
+          "SignInLogGroup": {
             "Type": "AWS::Logs::LogGroup",
             "Properties": {
-              "LogGroupName": "/aws/lambda/sls-auth-signIn-dev-createUser"
+              "LogGroupName": "/aws/lambda/sls-auth-signIn-dev-signIn"
             }
           },
           "IamRoleLambdaExecution": {
@@ -210,7 +210,7 @@
                         "Resource": [
                           {
                             "Fn::GetAtt": [
-                              "CreateUserLogGroup",
+                              "SignInLogGroup",
                               "Arn"
                             ]
                           }
@@ -222,17 +222,17 @@
               ]
             }
           },
-          "CreateUserLambdaFunction": {
+          "SignInLambdaFunction": {
             "Type": "AWS::Lambda::Function",
             "Properties": {
               "Code": {
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/sls-auth-signIn/dev/1587666833479-2020-04-23T18:33:53.479Z/sls-auth-signIn.zip"
+                "S3Key": "serverless/sls-auth-signIn/dev/1587934754624-2020-04-26T20:59:14.624Z/sls-auth-signIn.zip"
               },
-              "FunctionName": "sls-auth-signIn-dev-createUser",
-              "Handler": "s_createUser.handler",
+              "FunctionName": "sls-auth-signIn-dev-signIn",
+              "Handler": "s_signIn.handler",
               "MemorySize": 1024,
               "Role": {
                 "Fn::GetAtt": [
@@ -244,18 +244,18 @@
               "Timeout": 6
             },
             "DependsOn": [
-              "CreateUserLogGroup",
+              "SignInLogGroup",
               "IamRoleLambdaExecution"
             ]
           },
-          "CreateUserLambdaVersionmj7Q9quqQmbHF5SnCYMNWQF5IwEhqMovLiZOOOGjWMQ": {
+          "SignInLambdaVersionnpNrdxySEkbsWIAUHSgUzWw5EmS6lF39Z4UxWGac": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
-                "Ref": "CreateUserLambdaFunction"
+                "Ref": "SignInLambdaFunction"
               },
-              "CodeSha256": "Fu849qHOE/4c6/UlPeWGCx9X96NvVmeLO+HY/jBMvDU="
+              "CodeSha256": "j1VccuaCKawzASuxJffx6cfmYIJt8uAtgSNKvxLVuTY="
             }
           },
           "ApiGatewayResourceSignin": {
@@ -346,7 +346,7 @@
                       ":lambda:path/2015-03-31/functions/",
                       {
                         "Fn::GetAtt": [
-                          "CreateUserLambdaFunction",
+                          "SignInLambdaFunction",
                           "Arn"
                         ]
                       },
@@ -358,7 +358,7 @@
               "MethodResponses": []
             }
           },
-          "ApiGatewayDeployment1587666829747": {
+          "ApiGatewayDeployment1587934748756": {
             "Type": "AWS::ApiGateway::Deployment",
             "Properties": {
               "RestApiId": {
@@ -371,12 +371,12 @@
               "ApiGatewayMethodSigninPost"
             ]
           },
-          "CreateUserLambdaPermissionApiGateway": {
+          "SignInLambdaPermissionApiGateway": {
             "Type": "AWS::Lambda::Permission",
             "Properties": {
               "FunctionName": {
                 "Fn::GetAtt": [
-                  "CreateUserLambdaFunction",
+                  "SignInLambdaFunction",
                   "Arn"
                 ]
               },
@@ -517,7 +517,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/sls-auth-signIn/dev/1587666833479-2020-04-23T18:33:53.479Z/custom-resources.zip"
+                "S3Key": "serverless/sls-auth-signIn/dev/1587934754624-2020-04-26T20:59:14.624Z/custom-resources.zip"
               },
               "FunctionName": "sls-auth-signIn-dev-custom-resource-apigw-cw-role",
               "Handler": "apiGatewayCloudWatchRole/handler.handler",
@@ -535,13 +535,13 @@
               "IamRoleCustomResourcesLambdaExecution"
             ]
           },
-          "CloudWatchLogsSubscriptionFilterCreateUserLogGroup": {
+          "CloudWatchLogsSubscriptionFilterSignInLogGroup": {
             "Type": "AWS::Logs::SubscriptionFilter",
             "Properties": {
               "DestinationArn": "arn:aws:logs:us-east-1:802587217904:destination:0qynJP3sbnMH6Pj8yK#kg7b8rGN6fwpZlvfCz#sls-auth-signIn#dev",
               "FilterPattern": "?\"REPORT RequestId: \" ?\"SERVERLESS_ENTERPRISE\"",
               "LogGroupName": {
-                "Ref": "CreateUserLogGroup"
+                "Ref": "SignInLogGroup"
               }
             }
           },
@@ -570,10 +570,10 @@
               ]
             }
           },
-          "CreateUserLambdaFunctionQualifiedArn": {
+          "SignInLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "CreateUserLambdaVersionmj7Q9quqQmbHF5SnCYMNWQF5IwEhqMovLiZOOOGjWMQ"
+              "Ref": "SignInLambdaVersionnpNrdxySEkbsWIAUHSgUzWw5EmS6lF39Z4UxWGac"
             }
           },
           "ServiceEndpoint": {
@@ -680,8 +680,8 @@
     },
     "pluginsData": {},
     "functions": {
-      "createUser": {
-        "handler": "s_createUser.handler",
+      "signIn": {
+        "handler": "s_signIn.handler",
         "events": [
           {
             "http": {
@@ -710,13 +710,13 @@
             }
           }
         ],
-        "name": "sls-auth-signIn-dev-createUser",
+        "name": "sls-auth-signIn-dev-signIn",
         "package": {},
         "memory": 1024,
         "timeout": 6,
         "runtime": "nodejs12.x",
         "vpc": {},
-        "versionLogicalId": "CreateUserLambdaVersionmj7Q9quqQmbHF5SnCYMNWQF5IwEhqMovLiZOOOGjWMQ"
+        "versionLogicalId": "SignInLambdaVersionnpNrdxySEkbsWIAUHSgUzWw5EmS6lF39Z4UxWGac"
       }
     },
     "serviceFilename": "serverless.yml",
@@ -730,7 +730,7 @@
     "artifact": "/Users/prasannasingaravelu/Documents/serverless-auth/sls-auth/signIn/.serverless/sls-auth-signIn.zip"
   },
   "package": {
-    "artifactDirectoryName": "serverless/sls-auth-signIn/dev/1587666833479-2020-04-23T18:33:53.479Z",
+    "artifactDirectoryName": "serverless/sls-auth-signIn/dev/1587934754624-2020-04-26T20:59:14.624Z",
     "artifact": "sls-auth-signIn.zip"
   }
 }

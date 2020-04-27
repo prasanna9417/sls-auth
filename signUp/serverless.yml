@@ -23,8 +23,8 @@ provider:
       Resource: "*"
 
 functions:
-  createUser:
-    handler: index.signUp
+  signUp:
+    handler: lambda/index.signUp
     events:
       - http:
           path: signup

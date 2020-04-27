@@ -56,10 +56,16 @@
         }
       }
     },
-    "CreateUserLogGroup": {
+    "SignoutDashauthorizerLogGroup": {
       "Type": "AWS::Logs::LogGroup",
       "Properties": {
-        "LogGroupName": "/aws/lambda/sls-auth-signOut-dev-createUser"
+        "LogGroupName": "/aws/lambda/sls-auth-signOut-dev-signout-authorizer"
+      }
+    },
+    "SignoutLogGroup": {
+      "Type": "AWS::Logs::LogGroup",
+      "Properties": {
+        "LogGroupName": "/aws/lambda/sls-auth-signOut-dev-signout"
       }
     },
     "IamRoleLambdaExecution": {
@@ -183,7 +189,13 @@
                   "Resource": [
                     {
                       "Fn::GetAtt": [
-                        "CreateUserLogGroup",
+                        "SignoutDashauthorizerLogGroup",
+                        "Arn"
+                      ]
+                    },
+                    {
+                      "Fn::GetAtt": [
+                        "SignoutLogGroup",
                         "Arn"
                       ]
                     }
@@ -195,17 +207,17 @@
         ]
       }
     },
-    "CreateUserLambdaFunction": {
+    "SignoutDashauthorizerLambdaFunction": {
       "Type": "AWS::Lambda::Function",
       "Properties": {
         "Code": {
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/sls-auth-signOut/dev/1587672247928-2020-04-23T20:04:07.928Z/sls-auth-signOut.zip"
+          "S3Key": "serverless/sls-auth-signOut/dev/1587946600466-2020-04-27T00:16:40.466Z/sls-auth-signOut.zip"
         },
-        "FunctionName": "sls-auth-signOut-dev-createUser",
-        "Handler": "s_createUser.handler",
+        "FunctionName": "sls-auth-signOut-dev-signout-authorizer",
+        "Handler": "s_signout_authorizer.handler",
         "MemorySize": 1024,
         "Role": {
           "Fn::GetAtt": [
@@ -217,18 +229,54 @@
         "Timeout": 6
       },
       "DependsOn": [
-        "CreateUserLogGroup",
+        "SignoutDashauthorizerLogGroup",
         "IamRoleLambdaExecution"
       ]
     },
-    "CreateUserLambdaVersionP8bXw9fVkmfqudQEP4q5HN9bPn6h6gpcdtsXPk4KLk": {
+    "SignoutDashauthorizerLambdaVersionqBrUpIvA1KmZlPB4vPTGQ2v1SwRExrbwnoBX7EKxLCo": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
-          "Ref": "CreateUserLambdaFunction"
+          "Ref": "SignoutDashauthorizerLambdaFunction"
         },
-        "CodeSha256": "jMR1oBBOr46aZrFb8rgUx9kXN/hMtvldepP0oGCQm/E="
+        "CodeSha256": "nj2ts+IEmXrhsyg3TpnbULqIzSGoxxFegKnrVvw4qSw="
+      }
+    },
+    "SignoutLambdaFunction": {
+      "Type": "AWS::Lambda::Function",
+      "Properties": {
+        "Code": {
+          "S3Bucket": {
+            "Ref": "ServerlessDeploymentBucket"
+          },
+          "S3Key": "serverless/sls-auth-signOut/dev/1587946600466-2020-04-27T00:16:40.466Z/sls-auth-signOut.zip"
+        },
+        "FunctionName": "sls-auth-signOut-dev-signout",
+        "Handler": "s_signout.handler",
+        "MemorySize": 1024,
+        "Role": {
+          "Fn::GetAtt": [
+            "IamRoleLambdaExecution",
+            "Arn"
+          ]
+        },
+        "Runtime": "nodejs12.x",
+        "Timeout": 6
+      },
+      "DependsOn": [
+        "SignoutLogGroup",
+        "IamRoleLambdaExecution"
+      ]
+    },
+    "SignoutLambdaVersionkhVzSUm56wt9CQYiCB5IO1Ab6ESmHVmP1tXqgAuQ": {
+      "Type": "AWS::Lambda::Version",
+      "DeletionPolicy": "Retain",
+      "Properties": {
+        "FunctionName": {
+          "Ref": "SignoutLambdaFunction"
+        },
+        "CodeSha256": "nj2ts+IEmXrhsyg3TpnbULqIzSGoxxFegKnrVvw4qSw="
       }
     },
     "ApiGatewayResourceSignout": {
@@ -300,7 +348,10 @@
           "Fn::ImportValue": "SLSSharedGW-restApiId"
         },
         "ApiKeyRequired": false,
-        "AuthorizationType": "NONE",
+        "AuthorizationType": "CUSTOM",
+        "AuthorizerId": {
+          "Ref": "SignoutDashauthorizerApiGatewayAuthorizer"
+        },
         "Integration": {
           "IntegrationHttpMethod": "POST",
           "Type": "AWS_PROXY",
@@ -319,7 +370,7 @@
                 ":lambda:path/2015-03-31/functions/",
                 {
                   "Fn::GetAtt": [
-                    "CreateUserLambdaFunction",
+                    "SignoutLambdaFunction",
                     "Arn"
                   ]
                 },
@@ -329,9 +380,44 @@
           }
         },
         "MethodResponses": []
+      },
+      "DependsOn": "SignoutDashauthorizerApiGatewayAuthorizer"
+    },
+    "SignoutDashauthorizerApiGatewayAuthorizer": {
+      "Type": "AWS::ApiGateway::Authorizer",
+      "Properties": {
+        "IdentitySource": "method.request.header.Authorization",
+        "Name": "signout-authorizer",
+        "RestApiId": {
+          "Fn::ImportValue": "SLSSharedGW-restApiId"
+        },
+        "AuthorizerUri": {
+          "Fn::Join": [
+            "",
+            [
+              "arn:",
+              {
+                "Ref": "AWS::Partition"
+              },
+              ":apigateway:",
+              {
+                "Ref": "AWS::Region"
+              },
+              ":lambda:path/2015-03-31/functions/",
+              {
+                "Fn::GetAtt": [
+                  "SignoutDashauthorizerLambdaFunction",
+                  "Arn"
+                ]
+              },
+              "/invocations"
+            ]
+          ]
+        },
+        "Type": "TOKEN"
       }
     },
-    "ApiGatewayDeployment1587672241999": {
+    "ApiGatewayDeployment1587946594131": {
       "Type": "AWS::ApiGateway::Deployment",
       "Properties": {
         "RestApiId": {
@@ -344,12 +430,49 @@
         "ApiGatewayMethodSignoutPost"
       ]
     },
-    "CreateUserLambdaPermissionApiGateway": {
+    "SignoutLambdaPermissionApiGateway": {
       "Type": "AWS::Lambda::Permission",
       "Properties": {
         "FunctionName": {
           "Fn::GetAtt": [
-            "CreateUserLambdaFunction",
+            "SignoutLambdaFunction",
+            "Arn"
+          ]
+        },
+        "Action": "lambda:InvokeFunction",
+        "Principal": "apigateway.amazonaws.com",
+        "SourceArn": {
+          "Fn::Join": [
+            "",
+            [
+              "arn:",
+              {
+                "Ref": "AWS::Partition"
+              },
+              ":execute-api:",
+              {
+                "Ref": "AWS::Region"
+              },
+              ":",
+              {
+                "Ref": "AWS::AccountId"
+              },
+              ":",
+              {
+                "Fn::ImportValue": "SLSSharedGW-restApiId"
+              },
+              "/*/*"
+            ]
+          ]
+        }
+      }
+    },
+    "SignoutDashauthorizerLambdaPermissionApiGateway": {
+      "Type": "AWS::Lambda::Permission",
+      "Properties": {
+        "FunctionName": {
+          "Fn::GetAtt": [
+            "SignoutDashauthorizerLambdaFunction",
             "Arn"
           ]
         },
@@ -490,7 +613,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/sls-auth-signOut/dev/1587672247928-2020-04-23T20:04:07.928Z/custom-resources.zip"
+          "S3Key": "serverless/sls-auth-signOut/dev/1587946600466-2020-04-27T00:16:40.466Z/custom-resources.zip"
         },
         "FunctionName": "sls-auth-signOut-dev-custom-resource-apigw-cw-role",
         "Handler": "apiGatewayCloudWatchRole/handler.handler",
@@ -508,13 +631,23 @@
         "IamRoleCustomResourcesLambdaExecution"
       ]
     },
-    "CloudWatchLogsSubscriptionFilterCreateUserLogGroup": {
+    "CloudWatchLogsSubscriptionFilterSignoutDashauthorizerLogGroup": {
       "Type": "AWS::Logs::SubscriptionFilter",
       "Properties": {
         "DestinationArn": "arn:aws:logs:us-east-1:802587217904:destination:0qynJP3sbnMH6Pj8yK#kg7b8rGN6fwpZlvfCz#sls-auth-signOut#dev",
         "FilterPattern": "?\"REPORT RequestId: \" ?\"SERVERLESS_ENTERPRISE\"",
         "LogGroupName": {
-          "Ref": "CreateUserLogGroup"
+          "Ref": "SignoutDashauthorizerLogGroup"
+        }
+      }
+    },
+    "CloudWatchLogsSubscriptionFilterSignoutLogGroup": {
+      "Type": "AWS::Logs::SubscriptionFilter",
+      "Properties": {
+        "DestinationArn": "arn:aws:logs:us-east-1:802587217904:destination:0qynJP3sbnMH6Pj8yK#kg7b8rGN6fwpZlvfCz#sls-auth-signOut#dev",
+        "FilterPattern": "?\"REPORT RequestId: \" ?\"SERVERLESS_ENTERPRISE\"",
+        "LogGroupName": {
+          "Ref": "SignoutLogGroup"
         }
       }
     },
@@ -543,10 +676,16 @@
         ]
       }
     },
-    "CreateUserLambdaFunctionQualifiedArn": {
+    "SignoutDashauthorizerLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "CreateUserLambdaVersionP8bXw9fVkmfqudQEP4q5HN9bPn6h6gpcdtsXPk4KLk"
+        "Ref": "SignoutDashauthorizerLambdaVersionqBrUpIvA1KmZlPB4vPTGQ2v1SwRExrbwnoBX7EKxLCo"
+      }
+    },
+    "SignoutLambdaFunctionQualifiedArn": {
+      "Description": "Current Lambda function version",
+      "Value": {
+        "Ref": "SignoutLambdaVersionkhVzSUm56wt9CQYiCB5IO1Ab6ESmHVmP1tXqgAuQ"
       }
     },
     "ServiceEndpoint": {

@@ -22,19 +22,36 @@ console.log(date)
 
 const jwt = require('jsonwebtoken') 
 
-const token = jwt.sign({email_id:'123@gmail.com'}, "Stack", {
+const signInToken = jwt.sign({api:'auth-signin'}, "very-very-secret", {
 
-    expiresIn: '365d' // expires in 365 days
+    expiresIn: '60000'  
 
 });
 
-console.log(token)
+console.log(signInToken)
+
+const signUpToken = jwt.sign({api:'auth-signup'}, "very-very-secret", {
+
+    expiresIn: '60000'  
+
+});
+
+console.log(signUpToken)
+
+const forgotPasswordToken = jwt.sign({api:'auth-forgotpassword'}, "very-very-secret", {
+
+    expiresIn: '60000' 
+
+});
+
+console.log(forgotPasswordToken)
+
 
 
 
 const validateToken = (token) => {
     try{
-        const tokenData = jwt.verify(token, "Stack")
+        const tokenData = jwt.verify(token, "very-very-secret")
         return tokenData
     }catch(err){
         let error = false
@@ -42,5 +59,13 @@ const validateToken = (token) => {
     }
 }
 
-const tokenValidated = validateToken(token)
-console.log(tokenValidated)
+ 
+
+const signInTokenValidated = validateToken(signInToken)
+console.log(signInTokenValidated)
+
+const signUpTokenValidated = validateToken(signUpToken)
+console.log(signUpTokenValidated)
+
+const forgotPasswordTokenValidated = validateToken(forgotPasswordToken)
+console.log(forgotPasswordTokenValidated)

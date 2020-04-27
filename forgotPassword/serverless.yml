@@ -1,0 +1,36 @@
+org: prasanna9417
+app: serverless-auth
+service: sls-auth-forgotPassword
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  region: us-east-1
+  apiGateway:
+    restApiId:
+      "Fn::ImportValue": SLSSharedGW-restApiId
+    restApiRootResourceId:
+      "Fn::ImportValue": SLSSharedGW-rootResourceId
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - ses:SendEmail
+        - ses:SendRawEmail
+        - dynamodb:Query
+        - dynamodb:Scan
+        - dynamodb:GetItem
+        - dynamodb:PutItem
+        - dynamodb:UpdateItem
+        - dynamodb:DeleteItem
+      Resource: "*"
+
+functions:
+  forgotPassword:
+    handler: lambda/index.forgotPassword
+    events:
+      - http:
+          path: forgotpassword
+          method: post
+          cors: true
+
+ 

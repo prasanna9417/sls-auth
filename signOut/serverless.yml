@@ -23,12 +23,15 @@ provider:
       Resource: "*"
 
 functions:
-  createUser:
-    handler: index.signOut
+  signout-authorizer:
+    handler: authorizer/index.handler
+  signout:
+    handler: lambda/index.signOut
     events:
       - http:
           path: signout
           method: post
           cors: true
+          authorizer: signout-authorizer
 
  
