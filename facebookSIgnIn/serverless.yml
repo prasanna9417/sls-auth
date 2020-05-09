@@ -1,0 +1,37 @@
+org: prasanna9417
+app: serverless-auth
+service: sls-auth-facebookSignIn
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  region: us-east-1
+  apiGateway:
+    restApiId:
+      "Fn::ImportValue": SLSSharedGW-restApiId
+    restApiRootResourceId:
+      "Fn::ImportValue": SLSSharedGW-rootResourceId
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - dynamodb:Query
+        - dynamodb:Scan
+        - dynamodb:GetItem
+        - dynamodb:PutItem
+        - dynamodb:UpdateItem
+        - dynamodb:DeleteItem
+      Resource: "*"
+
+functions:
+  facebookSignIn-authorizer:
+    handler: authorizer/index.facebookOAuth2
+  facebookSignIn:
+    handler: lambda/index.facebookSignIn
+    events:
+      - http:
+          path: facebooksignin
+          method: post
+          cors: true
+          authorizer: facebookSignIn-authorizer
+
+ 

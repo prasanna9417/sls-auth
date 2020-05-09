@@ -202,7 +202,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/sls-auth-signIn/dev/1587934754624-2020-04-26T20:59:14.624Z/sls-auth-signIn.zip"
+          "S3Key": "serverless/sls-auth-signIn/dev/1588438836695-2020-05-02T17:00:36.695Z/sls-auth-signIn.zip"
         },
         "FunctionName": "sls-auth-signIn-dev-signIn",
         "Handler": "s_signIn.handler",
@@ -221,14 +221,14 @@
         "IamRoleLambdaExecution"
       ]
     },
-    "SignInLambdaVersionnpNrdxySEkbsWIAUHSgUzWw5EmS6lF39Z4UxWGac": {
+    "SignInLambdaVersiono12XC4RZpU084GPqhkW2afvIo1fG8ReFnNVgou86HI": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "SignInLambdaFunction"
         },
-        "CodeSha256": "j1VccuaCKawzASuxJffx6cfmYIJt8uAtgSNKvxLVuTY="
+        "CodeSha256": "zyXk1X+YZPRWzNeaEUI0KXB81yz4BDnOYXq3QS3goDU="
       }
     },
     "ApiGatewayResourceSignin": {
@@ -331,7 +331,7 @@
         "MethodResponses": []
       }
     },
-    "ApiGatewayDeployment1587934748756": {
+    "ApiGatewayDeployment1588438829978": {
       "Type": "AWS::ApiGateway::Deployment",
       "Properties": {
         "RestApiId": {
@@ -490,7 +490,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/sls-auth-signIn/dev/1587934754624-2020-04-26T20:59:14.624Z/custom-resources.zip"
+          "S3Key": "serverless/sls-auth-signIn/dev/1588438836695-2020-05-02T17:00:36.695Z/custom-resources.zip"
         },
         "FunctionName": "sls-auth-signIn-dev-custom-resource-apigw-cw-role",
         "Handler": "apiGatewayCloudWatchRole/handler.handler",
@@ -546,7 +546,7 @@
     "SignInLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "SignInLambdaVersionnpNrdxySEkbsWIAUHSgUzWw5EmS6lF39Z4UxWGac"
+        "Ref": "SignInLambdaVersiono12XC4RZpU084GPqhkW2afvIo1fG8ReFnNVgou86HI"
       }
     },
     "ServiceEndpoint": {

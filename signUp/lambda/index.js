@@ -1,10 +1,11 @@
-const {userSignUpValidator, validateToken} = require('./utils/validator')
+const {userSignUpValidator} = require('./utils/validator')
 const {encryption, apiResponse} = require('./utils/helper')
 const {findByEmailId, createUser} = require('./utils/db')
 
 module.exports.signUp = async (event)=>{
      
     const user = JSON.parse(event.body)
+    console.log(user)
     const {email} = user
     const errors = userSignUpValidator(user)
     

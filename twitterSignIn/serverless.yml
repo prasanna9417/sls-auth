@@ -1,0 +1,35 @@
+org: prasanna9417
+app: serverless-auth
+service: sls-auth-twitter-sign-in
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  region: us-east-1
+  apiGateway:
+    restApiId:
+      "Fn::ImportValue": SLSSharedGW-restApiId
+    restApiRootResourceId:
+      "Fn::ImportValue": SLSSharedGW-rootResourceId
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - dynamodb:Query
+        - dynamodb:Scan
+        - dynamodb:GetItem
+        - dynamodb:PutItem
+        - dynamodb:UpdateItem
+        - dynamodb:DeleteItem
+      Resource: "*"
+
+functions:
+  twitterSignIn:
+    handler: lambda/index.signIn
+    events:
+      - http:
+          path: twittersignin
+          method: post
+          cors: true
+           
+
+ 

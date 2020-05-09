@@ -15,24 +15,24 @@ module.exports.signIn = async (event) => {
             console.log(userData)
             if(userData.Count===1){
                 const checkedUser = userData.Items[0]
-                const payload = {
-                    sub: checkedUser.id,
-                    first_name:checkedUser.first_name,
-                    last_name: checkedUser.last_name,
-                    email:checkedUser.email
-                }
-                    
                 //console.log("validatePassword")
                 const isValidated = await validatePassword(user.password, checkedUser.password)
                 
-                    if(isValidated) {
+                if(isValidated) {
+                    const payload = {
+                        sub: checkedUser.id,
+                        first_name:checkedUser.first_name,
+                        last_name: checkedUser.last_name,
+                        email:checkedUser.email
+                    }
+                        
                     const token = generateToken(payload)    
                     console.log(token)
                     const tokenUpdated = await updateAddToken(checkedUser.id,token)
                     const response = apiResponse(200,{accessToken:token})
                     return response
     
-                } else {
+                }else {
                     const response = apiResponse(400,{error:'invalid email / password '} )
                     return response
                 }

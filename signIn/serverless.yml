@@ -1,6 +1,6 @@
 org: prasanna9417
 app: serverless-auth
-service: sls-auth-signIn
+service: sls-auth-verifyOTP
 
 provider:
   name: aws

@@ -3,20 +3,23 @@ const {generateRandom, date2Epoch} = require('./helper')
 const pick = require('lodash/pick')
 
 module.exports.createUser = async(user) => {
-    console.log('create user function')
+    console.log('create user function', user.phone_no)
     const random = generateRandom()
-    console.log(random)
+    const id = `email-auth|${random}`
     const  params = {
         TableName:table,
         Item:{
-            "id": random,
+            "id": id,
             "first_name": user.first_name,
             "last_name": user.last_name,
             "email":  user.email,
             "password": user.password,
             "tokens":[],
             "created_at": date2Epoch(),
-            "updated_at": date2Epoch()
+            "updated_at": date2Epoch(),
+            "otps":[],
+            "mobile":user.mobile,
+            "primary_auth_type": "email-auth"
         }
     };
     const  putObjectPromise = docClient.put(params).promise()

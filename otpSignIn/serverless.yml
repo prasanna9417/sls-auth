@@ -1,0 +1,35 @@
+org: prasanna9417
+app: serverless-auth
+service: sls-auth-otpSignIn
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  region: us-east-1
+  apiGateway:
+    restApiId:
+      "Fn::ImportValue": SLSSharedGW-restApiId
+    restApiRootResourceId:
+      "Fn::ImportValue": SLSSharedGW-rootResourceId
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - dynamodb:Query
+        - dynamodb:Scan
+        - dynamodb:GetItem
+        - dynamodb:PutItem
+        - dynamodb:UpdateItem
+        - dynamodb:DeleteItem
+      Resource: "*"
+
+functions:
+  otpSignIn:
+    handler: lambda/index.otpSignIn
+    events:
+      - http:
+          path: otpsignin
+          method: post
+          cors: true
+          
+
+ 

@@ -202,7 +202,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/sls-auth-signUp/dev/1587943644053-2020-04-26T23:27:24.053Z/sls-auth-signUp.zip"
+          "S3Key": "serverless/sls-auth-signUp/dev/1588437236982-2020-05-02T16:33:56.982Z/sls-auth-signUp.zip"
         },
         "FunctionName": "sls-auth-signUp-dev-signUp",
         "Handler": "s_signUp.handler",
@@ -221,14 +221,14 @@
         "IamRoleLambdaExecution"
       ]
     },
-    "SignUpLambdaVersiona3WDfBFeRJgkNmEpFpl4TVQ7qXXT5Bdr977XKWwkI0": {
+    "SignUpLambdaVersionqCWeiFbPQ24G18tGnra38oQJupi2RZvQiiu05HVCkD0": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "SignUpLambdaFunction"
         },
-        "CodeSha256": "/4PQ4256SBk6Ojh4pUuXOJqjczlMd4Mp7QgOxXdWias="
+        "CodeSha256": "ymwn71filN0VaCgih6E5+b8wQwrtg7WBtx+ZEVENMsg="
       }
     },
     "ApiGatewayResourceSignup": {
@@ -331,7 +331,7 @@
         "MethodResponses": []
       }
     },
-    "ApiGatewayDeployment1587943636324": {
+    "ApiGatewayDeployment1588437224613": {
       "Type": "AWS::ApiGateway::Deployment",
       "Properties": {
         "RestApiId": {
@@ -490,7 +490,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/sls-auth-signUp/dev/1587943644053-2020-04-26T23:27:24.053Z/custom-resources.zip"
+          "S3Key": "serverless/sls-auth-signUp/dev/1588437236982-2020-05-02T16:33:56.982Z/custom-resources.zip"
         },
         "FunctionName": "sls-auth-signUp-dev-custom-resource-apigw-cw-role",
         "Handler": "apiGatewayCloudWatchRole/handler.handler",
@@ -546,7 +546,7 @@
     "SignUpLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "SignUpLambdaVersiona3WDfBFeRJgkNmEpFpl4TVQ7qXXT5Bdr977XKWwkI0"
+        "Ref": "SignUpLambdaVersionqCWeiFbPQ24G18tGnra38oQJupi2RZvQiiu05HVCkD0"
       }
     },
     "ServiceEndpoint": {
