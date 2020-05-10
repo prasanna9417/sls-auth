@@ -1,6 +1,7 @@
 
 const { v4: uuidv4 } = require('uuid')
 const random = uuidv4()
+console.log(random)
 const client_id = '86mwacmqtxhrey'
 const redirect_uri = 'http://localhost:3000'
 const scope = encodeURIComponent('r_emailaddress,r_liteprofile')

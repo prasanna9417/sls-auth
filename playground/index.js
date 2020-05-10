@@ -89,76 +89,47 @@
 
 
 
-// const axios = require('axios')
+const axios = require('axios')
 
-// const clientId = 550965442521996
-// const clientSecret = "14d014504f32f88ac3dd71fb0a3820ba"
+const clientId = 550965442521996
+const clientSecret = "14d014504f32f88ac3dd71fb0a3820ba"
 
-// const accessTokenLink = appLink = `https://graph.facebook.com/oauth/access_token?client_id=${clientId}&client_secret=${clientSecret}&grant_type=client_credentials`
+const accessTokenLink = appLink = `https://graph.facebook.com/oauth/access_token?client_id=${clientId}&client_secret=${clientSecret}&grant_type=client_credentials`
 
-// let accessToken
+let accessToken
 
-// const userToken = 'EAAH1GaN8K4wBAH2KvlyS4RfFvzyeYDDfhXRdIZBKr828GLZAJg4T6VaZAcCV9UEJTtZAuuJeWFgTHnKF8mhj1hQnmJxf3GFZAE8mUTDJZAFzaBvE45oSGF9MOFXvn0cR33ugpv4S1LzGmVOFihe9rvSjqT7RVTlDq5BRBi15Kmp2r2sLgJYcgnLgd1XLIIbYkZB1w7NgBDZB5AZDZD'
+const userToken = 'EAAH1GaN8K4wBALbY0O07D4H0WBk1gqnVZCmZB6jtsSrrm7RAEkjv3jQK62qmdRbZA3SowwCfRqehW6YL2sZAZA3oMZCRL7sNt22wthhQP9bKf3LOJwmhN9uosvtRtsErA043AyNYPlmWBt4ZBVB9JFQPC39GPG3ChQeP4Cq8ORfT2ap5D22RbFn5weMBmPGqUBgwqGlSxVJxcWFZAyMqaOGKyaC5RVlN1xUZD'
 
-// axios.get(accessTokenLink)  
-//     .then(response=>{
-//         console.log(response.data)
-//         accessToken = response.data.access_token
-//         const debugLink = `https://graph.facebook.com/debug_token?input_token=${userToken}&access_token=${accessToken}`
-//         axios.get(debugLink)
-//             .then(response=>{
-//                 console.log(response.data)
-//                 const user_id = response.data.data.user_id
-//                 console.log(user_id)
-//                 const userDetailsLink = `https://graph.facebook.com/${user_id}?fields=id,name,email,first_name,last_name,hometown&access_token=${userToken}`
-//                 //const userDetailsLink = `https://graph.facebook.com/v2.3/me?access_token=${userToken}&fields=name%2Cemail%2Cpicture&locale=en_US&method=get&pretty=0&sdk=joey&suppress_http_code=1`
-//                 axios.get(userDetailsLink)
-//                     .then(response=>{
-//                         console.log(response.data)
-//                     })
-//                     .catch(err=>{
-//                         console.log(err)
-//                     })
-//             })
-//             .catch(err=>{
-//                 console.log(err)
-//             })
-//     })
-//     .catch(err=>{
-//         console.log(err)
-//     })
-
- 
-// var AWS = require("aws-sdk");
-
-// AWS.config.update({
-//   region: "us-east-1",
-// });
-
-// var docClient = new AWS.DynamoDB.DocumentClient();
+axios.get(accessTokenLink)  
+    .then(response=>{
+        console.log(response.data)
+        accessToken = response.data.access_token
+        const debugLink = `https://graph.facebook.com/debug_token?input_token=${userToken}&access_token=${accessToken}`
+        axios.get(debugLink)
+            .then(response=>{
+                console.log(response.data)
+                const user_id = response.data.data.user_id
+                console.log(user_id)
+                const userDetailsLink = `https://graph.facebook.com/${user_id}?fields=id,name,email,first_name,last_name,hometown&access_token=${userToken}`
+                //const userDetailsLink = `https://graph.facebook.com/v2.3/me?access_token=${userToken}&fields=name%2Cemail%2Cpicture&locale=en_US&method=get&pretty=0&sdk=joey&suppress_http_code=1`
+                axios.get(userDetailsLink)
+                    .then(response=>{
+                        console.log(response.data)
+                    })
+                    .catch(err=>{
+                        console.log(err)
+                    })
+            })
+            .catch(err=>{
+                console.log(err)
+            })
+    })
+    .catch(err=>{
+        console.log(err)
+    })
 
  
-
-// var params = {
-//     TableName : "auth-table",
-//     KeyConditionExpression: "mobile = :mobile",
  
-//     ExpressionAttributeValues: {
-//         ":mobile": 9791264254
-//     }
-// };
-
-// docClient.query(params, function(err, data) {
-//     if (err) {
-//         console.error("Unable to query. Error:", JSON.stringify(err, null, 2));
-//     } else {
-//         console.log("Query succeeded.");
-//         data.Items.forEach(function(item) {
-//             console.log(" -", item.year + ": " + item.title);
-//         });
-//     }
-// });
-
 
 
 const oauth_callback = encodeURIComponent('http://localhost:3000')

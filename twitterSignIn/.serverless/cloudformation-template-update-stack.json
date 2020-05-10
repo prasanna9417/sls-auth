@@ -202,7 +202,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/sls-auth-twitter-sign-in/dev/1589003691437-2020-05-09T05:54:51.437Z/sls-auth-twitter-sign-in.zip"
+          "S3Key": "serverless/sls-auth-twitter-sign-in/dev/1589111532263-2020-05-10T11:52:12.263Z/sls-auth-twitter-sign-in.zip"
         },
         "FunctionName": "sls-auth-twitter-sign-in-dev-twitterSignIn",
         "Handler": "s_twitterSignIn.handler",
@@ -221,14 +221,14 @@
         "IamRoleLambdaExecution"
       ]
     },
-    "TwitterSignInLambdaVersionq2ooF1ggGdYXKO00PosGYcgUNRFWxhu59qNEV9xQ": {
+    "TwitterSignInLambdaVersion2pkjiFqn6zfEwjeDqBLsL481TYAirT92RGlhtmQf7n8": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "TwitterSignInLambdaFunction"
         },
-        "CodeSha256": "pWrKZy/kH6eYX3WYVr28ztVsbtRxzbVTMZIAHaLwEmg="
+        "CodeSha256": "kDtrDjBq0yg6EovQMp7pek6ahykzCIg56SP2E/xQtN0="
       }
     },
     "ApiGatewayResourceTwittersignin": {
@@ -331,7 +331,7 @@
         "MethodResponses": []
       }
     },
-    "ApiGatewayDeployment1589003683888": {
+    "ApiGatewayDeployment1589111521121": {
       "Type": "AWS::ApiGateway::Deployment",
       "Properties": {
         "RestApiId": {
@@ -490,7 +490,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/sls-auth-twitter-sign-in/dev/1589003691437-2020-05-09T05:54:51.437Z/custom-resources.zip"
+          "S3Key": "serverless/sls-auth-twitter-sign-in/dev/1589111532263-2020-05-10T11:52:12.263Z/custom-resources.zip"
         },
         "FunctionName": "sls-auth-twitter-sign-in-dev-custom-resource-apigw-cw-role",
         "Handler": "apiGatewayCloudWatchRole/handler.handler",
@@ -546,7 +546,7 @@
     "TwitterSignInLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "TwitterSignInLambdaVersionq2ooF1ggGdYXKO00PosGYcgUNRFWxhu59qNEV9xQ"
+        "Ref": "TwitterSignInLambdaVersion2pkjiFqn6zfEwjeDqBLsL481TYAirT92RGlhtmQf7n8"
       }
     },
     "ServiceEndpoint": {
