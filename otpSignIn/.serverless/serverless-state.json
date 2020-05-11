@@ -229,7 +229,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/sls-auth-otpSignIn/dev/1588437152371-2020-05-02T16:32:32.371Z/sls-auth-otpSignIn.zip"
+                "S3Key": "serverless/sls-auth-otpSignIn/dev/1589190497755-2020-05-11T09:48:17.755Z/sls-auth-otpSignIn.zip"
               },
               "FunctionName": "sls-auth-otpSignIn-dev-otpSignIn",
               "Handler": "s_otpSignIn.handler",
@@ -248,14 +248,14 @@
               "IamRoleLambdaExecution"
             ]
           },
-          "OtpSignInLambdaVersionZMZLgLZVcPkMWkaKM24jF78B1xBGPF5yBSVwSQsZM": {
+          "OtpSignInLambdaVersionZS3euANL9BUlMb2j5pkFjsuBqQAOv23Y4b81yXL3tA0": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "OtpSignInLambdaFunction"
               },
-              "CodeSha256": "HUdawT8YNs1FxbPYnpudXNXG3o99wr0LoKJFDVfMXYo="
+              "CodeSha256": "D2irvoP5+rmKT8zUcAq21djDOK8B5pSRfeBtiRe+gxU="
             }
           },
           "ApiGatewayResourceOtpsignin": {
@@ -358,7 +358,7 @@
               "MethodResponses": []
             }
           },
-          "ApiGatewayDeployment1588437144307": {
+          "ApiGatewayDeployment1589190490414": {
             "Type": "AWS::ApiGateway::Deployment",
             "Properties": {
               "RestApiId": {
@@ -517,7 +517,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/sls-auth-otpSignIn/dev/1588437152371-2020-05-02T16:32:32.371Z/custom-resources.zip"
+                "S3Key": "serverless/sls-auth-otpSignIn/dev/1589190497755-2020-05-11T09:48:17.755Z/custom-resources.zip"
               },
               "FunctionName": "sls-auth-otpSignIn-dev-custom-resource-apigw-cw-role",
               "Handler": "apiGatewayCloudWatchRole/handler.handler",
@@ -573,7 +573,7 @@
           "OtpSignInLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "OtpSignInLambdaVersionZMZLgLZVcPkMWkaKM24jF78B1xBGPF5yBSVwSQsZM"
+              "Ref": "OtpSignInLambdaVersionZS3euANL9BUlMb2j5pkFjsuBqQAOv23Y4b81yXL3tA0"
             }
           },
           "ServiceEndpoint": {
@@ -716,7 +716,7 @@
         "timeout": 6,
         "runtime": "nodejs12.x",
         "vpc": {},
-        "versionLogicalId": "OtpSignInLambdaVersionZMZLgLZVcPkMWkaKM24jF78B1xBGPF5yBSVwSQsZM"
+        "versionLogicalId": "OtpSignInLambdaVersionZS3euANL9BUlMb2j5pkFjsuBqQAOv23Y4b81yXL3tA0"
       }
     },
     "serviceFilename": "serverless.yml",
@@ -730,7 +730,7 @@
     "artifact": "/Users/prasannasingaravelu/Documents/serverless-auth/sls-auth/otpSignIn/.serverless/sls-auth-otpSignIn.zip"
   },
   "package": {
-    "artifactDirectoryName": "serverless/sls-auth-otpSignIn/dev/1588437152371-2020-05-02T16:32:32.371Z",
+    "artifactDirectoryName": "serverless/sls-auth-otpSignIn/dev/1589190497755-2020-05-11T09:48:17.755Z",
     "artifact": "sls-auth-otpSignIn.zip"
   }
 }

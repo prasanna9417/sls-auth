@@ -1,5 +1,5 @@
 const {verifyToken, getAuthorizationHeader, getUserDetails, extractTokens} = require('./utils/twitterAuth')
-const {findByEmailId, createUserWithoutEmail, createUser, updateAddToken, findByUserName} = require('./utils/db')
+const {findByEmailId, createUserWithoutEmail, createUser, updateAddToken, findByAuthTypeAndId} = require('./utils/db')
 const {apiResponse,generateRandomId, generateToken} = require('./utils/helper')
 
 module.exports.signIn = async (event) => {
@@ -15,8 +15,7 @@ module.exports.signIn = async (event) => {
         console.log(authorization_header)
         const userDetails = await getUserDetails(authorization_header)
         console.log(userDetails)
-        const email = userDetails.email
-        const name = userDetails.screen_name
+        const {email,name, id_str} = userDetails
         console.log(name)
         console.log('email',email)
         if(email){
@@ -27,8 +26,14 @@ module.exports.signIn = async (event) => {
                 console.log('user exist')
                 const checkedUser = userData.Items[0]
                 console.log(checkedUser)
-                const payload = {sub: checkedUser.id, first_name: checkedUser.first_name, last_name: checkedUser.last_name, email: checkedUser.email }
-                console.log(payload)
+                let payload
+                if(checkedUser.first_name && checkedUser.last_name){
+                    payload = {sub: checkedUser.id, first_name: checkedUser.first_name, last_name: checkedUser.last_name, email: checkedUser.email }
+                    console.log(payload)
+                }else if(checkedUser.user_name){
+                    payload = {sub: checkedUser.id, user_name: checkedUser.user_name, email: checkedUser.email }
+                    console.log(payload)
+                }
                 const token = generateToken(payload)
                 const tokenUpdated = await updateAddToken(checkedUser.id, token)
                 const response =  apiResponse(200, { access_token: token})
@@ -36,22 +41,28 @@ module.exports.signIn = async (event) => {
             }else if(userData.Count===0){
                 console.log('user dosent exist')
                 const random = generateRandomId()
-                const id = `twitter-oauth2|${random}`
-                const payload = {sub: id, user_name:name, email:email }
+                const user_id = `twitter-oauth2|${random}`
+                const payload = {sub: user_id, user_name:name, email:email, auth_id:id_str }
                 const token = generateToken(payload)
-                const userCreated= await createUser(id,name,email,token)
+                const userCreated= await createUser(user_id,name,email,token,id_str)
                 const response =  apiResponse(200, { access_token: token})
                 return response
             }
         }else{
             console.log('email dosent exist')
-            const userData =  await findByUserName(name)
+            const userData =  await findByAuthTypeAndId(id_str)
             if(userData.Count===1){
                 console.log('user exist')
                 const checkedUser = userData.Items[0]
                 console.log(checkedUser)
-                const payload = {sub: checkedUser.id, name: checkedUser.name}
-                console.log(payload)
+                let payload
+                if(checkedUser.first_name && checkedUser.last_name){
+                    payload = {sub: checkedUser.id, first_name: checkedUser.first_name, last_name: checkedUser.last_name }
+                    console.log(payload)
+                }else if(checkedUser.user_name){
+                    payload = {sub: checkedUser.id, user_name: checkedUser.user_name }
+                    console.log(payload)
+                }
                 const token = generateToken(payload)
                 const tokenUpdated = await updateAddToken(checkedUser.id, token)
                 const response =  apiResponse(200, { access_token: token})
@@ -59,10 +70,10 @@ module.exports.signIn = async (event) => {
             }else if(userData.Count===0){
                 console.log('user dosent exist')
                 const random = generateRandomId()
-                const id = `twitter-oauth2|${random}`
-                const payload = {sub: id, user_name: name}
+                const user_id = `twitter-oauth2|${random}`
+                const payload = {sub: user_id, user_name: name}
                 const token = generateToken(payload)
-                const userCreated= await createUserWithoutEmail(id,name,token)
+                const userCreated= await createUserWithoutEmail(user_id,name,token,id_str)
                 const response =  apiResponse(200, { access_token: token})
                 return response
  

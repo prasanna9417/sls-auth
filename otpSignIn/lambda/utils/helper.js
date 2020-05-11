@@ -1,4 +1,5 @@
 const axios = require('axios') 
+const bcryptjs = require('bcryptjs')
 
 module.exports.generateRandom = () => {
     console.log('random function')
@@ -7,6 +8,30 @@ module.exports.generateRandom = () => {
     return random
 
 }
+
+
+module.exports.encryption = async (otp)=>{
+  const otpString = otp.toString()
+  console.log('encryption function')
+  let promise = new Promise((resolve, reject) => {
+      bcryptjs.genSalt(10)
+      .then(function (salt) {
+          bcryptjs.hash(otpString, salt)
+              .then(function (encryptedOtp) {
+                  resolve(encryptedOtp)
+              })
+              .catch(err=>{
+                  reject(err)
+              })
+      })
+      .catch(err=>{
+          reject(err)
+      })
+  });
+  const response = await promise;
+  return response;
+}
+
 
 
 module.exports.apiResponse = async(code,body) => {

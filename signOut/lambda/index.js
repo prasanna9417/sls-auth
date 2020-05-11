@@ -1,14 +1,14 @@
  const {apiResponse, filterTokens} = require('./utils/helper')
-const {updateTokens, findByEmailId} = require('./utils/db')
+const {updateTokens, findById} = require('./utils/db')
 
 module.exports.signOut = async (event) => {
     console.log(event.requestContext.authorizer)
     const {token,user} = event.requestContext.authorizer
     console.log('signout function', user)
     try{
-        const {email} = JSON.parse(user)
-        console.log(email)
-        const userData = await findByEmailId(email)
+        const {id} = JSON.parse(user)
+        console.log(id)
+        const userData = await findById(id)
         console.log(userData)
         if(userData.Count===1){
             const {tokens,id} = userData.Items[0]

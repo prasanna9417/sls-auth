@@ -44,9 +44,9 @@ module.exports.createUser = async(user, id,token) => {
             "email":  user.email,
             "password": password,
             "tokens":[token],
-            "created_at": date2Epoch(),
+            "created_at": date2Epoch(), 
             "updated_at": date2Epoch(),
-            "otps": [],
+            "auth_id": user.sub,
             "primary_auth_type":"google-oauth2"
         }
     };

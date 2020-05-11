@@ -30,13 +30,16 @@ module.exports.findByEmailId = async (email) => {
 }
 
 
-module.exports.findByUserName = async (user_name) => {
+module.exports.findByAuthTypeAndId = async (id) => {
+    console.log('find by auth type and id function')
     const params = {
         TableName : table,
-        IndexName : "user_name-index",
-        KeyConditionExpression: "user_name = :user_name",
+        IndexName : "primary_auth_type-index",
+        KeyConditionExpression: "primary_auth_type = :auth",
+        FilterExpression: "auth_id = :id",
         ExpressionAttributeValues: {
-            ":user_name": user_name
+            ":auth": "twitter-oauth2",
+            ":id": id
         }
     
     };
@@ -56,18 +59,19 @@ module.exports.findByUserName = async (user_name) => {
     return response;
 
 }
+ 
 
-module.exports.createUserWithoutEmail = async(id,name,token) => {
+module.exports.createUserWithoutEmail = async(user_id,name,token,auth_id) => {
     console.log('create user without email function')
     const  params = {
         TableName:table,
         Item:{
-            "id": id,
+            "id": user_id,
             "user_name": name,
             "tokens":[token],
             "created_at": date2Epoch(),
             "updated_at": date2Epoch(),
-            "otps": [],
+            "auth_id": auth_id,
             "primary_auth_type":"twitter-oauth2"
         }
     };
@@ -89,7 +93,7 @@ module.exports.createUserWithoutEmail = async(id,name,token) => {
  
 }
 
-module.exports.createUser = async(id,name,email,token) => {
+module.exports.createUser = async(user_id,name,email,token,auth_id) => {
     console.log('create user function')
     const randomPassword = generateRandomPassword()
     console.log(randomPassword)
@@ -98,14 +102,14 @@ module.exports.createUser = async(id,name,email,token) => {
     const  params = {
         TableName:table,
         Item:{
-            "id": id,
+            "id": user_id,
             "user_name": name,
             "email":  email,
             "password": password,
             "tokens":[token],
             "created_at": date2Epoch(),
             "updated_at": date2Epoch(),
-            "otps": [],
+            "auth_id":auth_id,
             "primary_auth_type":"twitter-oauth2"
         }
     };

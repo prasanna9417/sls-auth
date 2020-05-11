@@ -49,3 +49,4 @@ module.exports.date2Epoch = () => {
     const timeStamp = Math.floor(date.getTime()/1000.0)
     return timeStamp
 }
+

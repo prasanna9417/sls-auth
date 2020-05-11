@@ -60,7 +60,7 @@ module.exports.findByAuthTypeAndId = async (id) => {
 }
 
 
-module.exports.createUser = async(id,localizedFirstName,localizedLastName,email,token) => {
+module.exports.createUser = async(id,localizedFirstName,localizedLastName,email,token,auth_id) => {
     console.log('create user function')
     const randomPassword = generateRandomPassword()
     console.log(randomPassword)
@@ -77,7 +77,8 @@ module.exports.createUser = async(id,localizedFirstName,localizedLastName,email,
             "tokens":[token],
             "created_at": date2Epoch(),
             "updated_at": date2Epoch(),
-            "primary_auth_type":"linkedin-oauth2"
+            "primary_auth_type":"linkedin-oauth2",
+            "auth_id": auth_id
         }
     };
     const  putObjectPromise = docClient.put(params).promise()

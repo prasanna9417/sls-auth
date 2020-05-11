@@ -14,6 +14,10 @@ const oauth_token = "945828337-EOZUe3ZZzDaFJu91iWn3esp30XpvPc3axidjFx3X"
 
 const oauth_token_secret = "ZS3GIaLMT4xTcSp1nhovJAHwRbyImrbYiifo2HtUeNbUN"
 
+// const oauth_token="1259742908581679104-rral0k3Pf7wwCSojug2i0pw7ZF341m"
+
+// const oauth_token_secret = "t9H72g4hHgxlYo61nzblgu0zZgsiT6PFGHZ6car4PcSoJ"
+
 const url = 'https://api.twitter.com/1.1/account/verify_credentials.json'
 
 const parameter_string = `include_email=true&oauth_consumer_key=${oauth_consumer_key}&oauth_nonce=${oauth_nonce}&oauth_signature_method=HMAC-SHA1&oauth_timestamp=${oauth_timestamp}&oauth_token=${oauth_token}&oauth_version=1.0`

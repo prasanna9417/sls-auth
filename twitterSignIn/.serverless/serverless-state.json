@@ -229,7 +229,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/sls-auth-twitter-sign-in/dev/1589111532263-2020-05-10T11:52:12.263Z/sls-auth-twitter-sign-in.zip"
+                "S3Key": "serverless/sls-auth-twitter-sign-in/dev/1589183276025-2020-05-11T07:47:56.025Z/sls-auth-twitter-sign-in.zip"
               },
               "FunctionName": "sls-auth-twitter-sign-in-dev-twitterSignIn",
               "Handler": "s_twitterSignIn.handler",
@@ -248,14 +248,14 @@
               "IamRoleLambdaExecution"
             ]
           },
-          "TwitterSignInLambdaVersion2pkjiFqn6zfEwjeDqBLsL481TYAirT92RGlhtmQf7n8": {
+          "TwitterSignInLambdaVersionJajianzKmOYhkhNOwThYO0Y6JVPsj6DJ8P6UQwOKrlo": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "TwitterSignInLambdaFunction"
               },
-              "CodeSha256": "kDtrDjBq0yg6EovQMp7pek6ahykzCIg56SP2E/xQtN0="
+              "CodeSha256": "oAKy/k8Dc2ssON2UBPm3yWlaQrBFcaUyrkVh/Mm0NWk="
             }
           },
           "ApiGatewayResourceTwittersignin": {
@@ -358,7 +358,7 @@
               "MethodResponses": []
             }
           },
-          "ApiGatewayDeployment1589111521121": {
+          "ApiGatewayDeployment1589183267421": {
             "Type": "AWS::ApiGateway::Deployment",
             "Properties": {
               "RestApiId": {
@@ -517,7 +517,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/sls-auth-twitter-sign-in/dev/1589111532263-2020-05-10T11:52:12.263Z/custom-resources.zip"
+                "S3Key": "serverless/sls-auth-twitter-sign-in/dev/1589183276025-2020-05-11T07:47:56.025Z/custom-resources.zip"
               },
               "FunctionName": "sls-auth-twitter-sign-in-dev-custom-resource-apigw-cw-role",
               "Handler": "apiGatewayCloudWatchRole/handler.handler",
@@ -573,7 +573,7 @@
           "TwitterSignInLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "TwitterSignInLambdaVersion2pkjiFqn6zfEwjeDqBLsL481TYAirT92RGlhtmQf7n8"
+              "Ref": "TwitterSignInLambdaVersionJajianzKmOYhkhNOwThYO0Y6JVPsj6DJ8P6UQwOKrlo"
             }
           },
           "ServiceEndpoint": {
@@ -716,7 +716,7 @@
         "timeout": 6,
         "runtime": "nodejs12.x",
         "vpc": {},
-        "versionLogicalId": "TwitterSignInLambdaVersion2pkjiFqn6zfEwjeDqBLsL481TYAirT92RGlhtmQf7n8"
+        "versionLogicalId": "TwitterSignInLambdaVersionJajianzKmOYhkhNOwThYO0Y6JVPsj6DJ8P6UQwOKrlo"
       }
     },
     "serviceFilename": "serverless.yml",
@@ -730,7 +730,7 @@
     "artifact": "/Users/prasannasingaravelu/Documents/serverless-auth/sls-auth/twitterSignIn/.serverless/sls-auth-twitter-sign-in.zip"
   },
   "package": {
-    "artifactDirectoryName": "serverless/sls-auth-twitter-sign-in/dev/1589111532263-2020-05-10T11:52:12.263Z",
+    "artifactDirectoryName": "serverless/sls-auth-twitter-sign-in/dev/1589183276025-2020-05-11T07:47:56.025Z",
     "artifact": "sls-auth-twitter-sign-in.zip"
   }
 }

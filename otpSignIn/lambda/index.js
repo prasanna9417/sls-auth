@@ -1,6 +1,6 @@
  
 const {findByMobile, updateAddOTP} = require('./utils/db')
-const {generateRandom, apiResponse, sendSMS} = require('./utils/helper')
+const {generateRandom, apiResponse, sendSMS, encryption} = require('./utils/helper')
  
 module.exports.otpSignIn = async (event) => {
  
@@ -14,7 +14,8 @@ module.exports.otpSignIn = async (event) => {
                 const checkedUser = userData.Items[0]
                 const {id} = checkedUser
                 const otp = generateRandom()
-                const otpUpdated= await updateAddOTP(id, otp)
+                const encryptedOtp = await encryption(otp)
+                const otpUpdated= await updateAddOTP(id, encryptedOtp)
                 const sendOTP = await sendSMS(mobile,otp)
                 console.log(sendOTP)
                 const response = apiResponse(200,{message:'OTP send to your registered phone no'} )

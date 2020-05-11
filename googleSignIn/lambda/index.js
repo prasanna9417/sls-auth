@@ -16,8 +16,14 @@ module.exports.googleSignIn = async (event) => {
             console.log('user exist')
             const checkedUser = userData.Items[0]
             console.log(checkedUser)
-            const payload = {sub: checkedUser.id, first_name: checkedUser.first_name, last_name: checkedUser.last_name, email: checkedUser.email }
-            console.log(payload)
+            let payload
+            if(checkedUser.first_name && checkedUser.last_name){
+                payload = {sub: checkedUser.id, first_name: checkedUser.first_name, last_name: checkedUser.last_name, email: checkedUser.email }
+                console.log(payload)
+            }else if(checkedUser.user_name){
+                payload = {sub: checkedUser.id, user_name: checkedUser.user_name, email: checkedUser.email }
+                console.log(payload)
+            }
             const token = generateToken(payload)
             const tokenUpdated = await updateAddToken(checkedUser.id, token)
             const response =  apiResponse(200, { access_token: token})
@@ -26,7 +32,7 @@ module.exports.googleSignIn = async (event) => {
             console.log('user dosent exist', user)
             const random = generateRandom()
             const id = `google-oauth2|${random}`
-            const payload = {sub: id, first_name: user.first_name, last_name: user.family_name, email:user.email }
+            const payload = {sub: id, first_name: user.first_name, last_name: user.first_name, email:user.email }
             const token = generateToken(payload)
             const userCreated= await createUser(user, id, token)
             const response =  apiResponse(200, { access_token: token})

@@ -229,7 +229,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/sls-auth-linkedin-sign-in/dev/1589122643221-2020-05-10T14:57:23.221Z/sls-auth-linkedin-sign-in.zip"
+                "S3Key": "serverless/sls-auth-linkedin-sign-in/dev/1589182707696-2020-05-11T07:38:27.696Z/sls-auth-linkedin-sign-in.zip"
               },
               "FunctionName": "sls-auth-linkedin-sign-in-dev-linkedinSignIn",
               "Handler": "s_linkedinSignIn.handler",
@@ -248,14 +248,14 @@
               "IamRoleLambdaExecution"
             ]
           },
-          "LinkedinSignInLambdaVersionBmwYa7TkTisWCeWFb3iQAYdfjYAjcLAjdwdITUzo": {
+          "LinkedinSignInLambdaVersionlzCQ3pIrvDYsuDB9s6EOuLdfHpagrJnXuOH8xCveY": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "LinkedinSignInLambdaFunction"
               },
-              "CodeSha256": "3ZUD5s3qW+VztjkzW2J6qDnxhAYRFLKIepvAPsO/rfs="
+              "CodeSha256": "Otv86N44Ka9VsPbdwf/AAl6joeHTFFvWTPqAKccoDRo="
             }
           },
           "ApiGatewayResourceLinkedinsignin": {
@@ -358,7 +358,7 @@
               "MethodResponses": []
             }
           },
-          "ApiGatewayDeployment1589122634517": {
+          "ApiGatewayDeployment1589182700159": {
             "Type": "AWS::ApiGateway::Deployment",
             "Properties": {
               "RestApiId": {
@@ -517,7 +517,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/sls-auth-linkedin-sign-in/dev/1589122643221-2020-05-10T14:57:23.221Z/custom-resources.zip"
+                "S3Key": "serverless/sls-auth-linkedin-sign-in/dev/1589182707696-2020-05-11T07:38:27.696Z/custom-resources.zip"
               },
               "FunctionName": "sls-auth-linkedin-sign-in-dev-custom-resource-apigw-cw-role",
               "Handler": "apiGatewayCloudWatchRole/handler.handler",
@@ -573,7 +573,7 @@
           "LinkedinSignInLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "LinkedinSignInLambdaVersionBmwYa7TkTisWCeWFb3iQAYdfjYAjcLAjdwdITUzo"
+              "Ref": "LinkedinSignInLambdaVersionlzCQ3pIrvDYsuDB9s6EOuLdfHpagrJnXuOH8xCveY"
             }
           },
           "ServiceEndpoint": {
@@ -716,7 +716,7 @@
         "timeout": 6,
         "runtime": "nodejs12.x",
         "vpc": {},
-        "versionLogicalId": "LinkedinSignInLambdaVersionBmwYa7TkTisWCeWFb3iQAYdfjYAjcLAjdwdITUzo"
+        "versionLogicalId": "LinkedinSignInLambdaVersionlzCQ3pIrvDYsuDB9s6EOuLdfHpagrJnXuOH8xCveY"
       }
     },
     "serviceFilename": "serverless.yml",
@@ -730,7 +730,7 @@
     "artifact": "/Users/prasannasingaravelu/Documents/serverless-auth/sls-auth/linkedinSignIn/.serverless/sls-auth-linkedin-sign-in.zip"
   },
   "package": {
-    "artifactDirectoryName": "serverless/sls-auth-linkedin-sign-in/dev/1589122643221-2020-05-10T14:57:23.221Z",
+    "artifactDirectoryName": "serverless/sls-auth-linkedin-sign-in/dev/1589182707696-2020-05-11T07:38:27.696Z",
     "artifact": "sls-auth-linkedin-sign-in.zip"
   }
 }

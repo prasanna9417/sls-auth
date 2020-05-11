@@ -1,16 +1,15 @@
 const {docClient, table} = require('../config/awsConfig')
 const {date2Epoch} = require('./helper')
 
-module.exports.findByMobileAndOTP = async(mobile, otp) => {
-    console.log("find by mobile and otp funciton", mobile, otp)
+module.exports.findByMobile = async(mobile) => {
+    console.log("find by mobile  funciton", mobile)
     const  params = {
         TableName: table,
         IndexName : "mobile-index",
         KeyConditionExpression: "mobile = :mobile",
-        FilterExpression: "contains(otps, :otpVal)",
         ExpressionAttributeValues: {
             ":mobile": mobile,
-            ":otpVal": otp
+             
         }
     };
     const  queryObjectPromise = docClient.query(params).promise()
@@ -26,7 +25,7 @@ module.exports.findByMobileAndOTP = async(mobile, otp) => {
             })
     });
     const response = await promise;
-    console.log("mobile otp funciton ends")
+    console.log("mobile funciton ends")
     return response;
 }
 

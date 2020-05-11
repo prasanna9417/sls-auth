@@ -3,7 +3,7 @@ const {generateRandom, date2Epoch} = require('./helper')
 const pick = require('lodash/pick')
 
 module.exports.createUser = async(user) => {
-    console.log('create user function', user.phone_no)
+    console.log('create user function')
     const random = generateRandom()
     const id = `email-auth|${random}`
     const  params = {

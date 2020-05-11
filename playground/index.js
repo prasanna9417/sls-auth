@@ -70,63 +70,62 @@
 // console.log(forgotPasswordTokenValidated)
 
 
-// const CLIENT_ID = "543804089315-pjje1pbnov5618b4j1tfgtnl2ed6jqhk.apps.googleusercontent.com"
+const CLIENT_ID = "543804089315-pjje1pbnov5618b4j1tfgtnl2ed6jqhk.apps.googleusercontent.com"
 
 
-// const {OAuth2Client} = require('google-auth-library');
-// const client = new OAuth2Client(CLIENT_ID);
+const {OAuth2Client} = require('google-auth-library');
+const client = new OAuth2Client(CLIENT_ID);
 
-// const token = "eyJhbGciOiJSUzI1NiIsImtpZCI6IjI4Yjc0MWU4ZGU5ODRhNDcxNTlmMTllNmQ3NzgzZTlkNGZhODEwZGIiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJhY2NvdW50cy5nb29nbGUuY29tIiwiYXpwIjoiNTQzODA0MDg5MzE1LXBqamUxcGJub3Y1NjE4YjRqMXRmZ3RubDJlZDZqcWhrLmFwcHMuZ29vZ2xldXNlcmNvbnRlbnQuY29tIiwiYXVkIjoiNTQzODA0MDg5MzE1LXBqamUxcGJub3Y1NjE4YjRqMXRmZ3RubDJlZDZqcWhrLmFwcHMuZ29vZ2xldXNlcmNvbnRlbnQuY29tIiwic3ViIjoiMTA3NzA4MTc3MjQ3NzI1MTk2MzM3IiwiaGQiOiJhbnRzdGFjay5pbyIsImVtYWlsIjoicHJhc2FubmFAYW50c3RhY2suaW8iLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwiYXRfaGFzaCI6IlVMTDM5MFJmX2hsT1ZjQ1pRbkxJUEEiLCJuYW1lIjoiUHJhc2FubmEgQmFsYWppIiwicGljdHVyZSI6Imh0dHBzOi8vbGgzLmdvb2dsZXVzZXJjb250ZW50LmNvbS8tLXNvUjhkWkpBNjQvQUFBQUFBQUFBQUkvQUFBQUFBQUFBQUEvQUFLV0pKUGoxMTRJb0pkQWVYTjBRSTMxb1pUQlB2VU1RUS9zOTYtYy9waG90by5qcGciLCJnaXZlbl9uYW1lIjoiUHJhc2FubmEgIiwiZmFtaWx5X25hbWUiOiJCYWxhamkiLCJsb2NhbGUiOiJlbi1HQiIsImlhdCI6MTU4ODAxNTExNiwiZXhwIjoxNTg4MDE4NzE2LCJqdGkiOiJiZTZiM2Y2ZThhYTM5M2U3MjBiM2E1NjVkZjBjYmU5YjFhNWE0NWI1In0.bk91rNpaquqVxH8l3wl5g5Hd_4hx4d7QSgN7aVkEFLiCqb77lLzMDogWKtIXJhHYIIh3yKdq_7svYWfDzCQmu-bq38twRR2H4RhT2YM848-BbmrRry91ReG2bPgLVhXieNQvLA8Wcaxvr2qswYBMPJJWutq9pDEtIQDkOEt6VaUi8nYxt2EEzKN4M8GbDV4Exft13dWVdiD6Hb5nJ7AXADKYBTvu1dTq28BidB4A4YpnPHpyfKqhKD0U2HiVM-jh8Z81R3l9oPtqiXSeHOh3dNeorqtYyo3Sln9zf_JPinss2-OHPn2PLvJPMz-tjewhGfZlm6Qx--esPaTOL76vPQ"
+const token = "eyJhbGciOiJSUzI1NiIsImtpZCI6Ijc0YmQ4NmZjNjFlNGM2Y2I0NTAxMjZmZjRlMzhiMDY5YjhmOGYzNWMiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJhY2NvdW50cy5nb29nbGUuY29tIiwiYXpwIjoiNTQzODA0MDg5MzE1LXBqamUxcGJub3Y1NjE4YjRqMXRmZ3RubDJlZDZqcWhrLmFwcHMuZ29vZ2xldXNlcmNvbnRlbnQuY29tIiwiYXVkIjoiNTQzODA0MDg5MzE1LXBqamUxcGJub3Y1NjE4YjRqMXRmZ3RubDJlZDZqcWhrLmFwcHMuZ29vZ2xldXNlcmNvbnRlbnQuY29tIiwic3ViIjoiMTA3NzA4MTc3MjQ3NzI1MTk2MzM3IiwiaGQiOiJhbnRzdGFjay5pbyIsImVtYWlsIjoicHJhc2FubmFAYW50c3RhY2suaW8iLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwiYXRfaGFzaCI6IjBTcV9ibS1oNlMzeXNnOTJ5UHN6a2ciLCJuYW1lIjoiUHJhc2FubmEgQmFsYWppIiwicGljdHVyZSI6Imh0dHBzOi8vbGgzLmdvb2dsZXVzZXJjb250ZW50LmNvbS8tLXNvUjhkWkpBNjQvQUFBQUFBQUFBQUkvQUFBQUFBQUFBQUEvQU1adXVjbmhsRy02UDhjN2FWeVRXQ3Mwem42bVpRNF9jQS9zOTYtYy9waG90by5qcGciLCJnaXZlbl9uYW1lIjoiUHJhc2FubmEgIiwiZmFtaWx5X25hbWUiOiJCYWxhamkiLCJsb2NhbGUiOiJlbi1HQiIsImlhdCI6MTU4OTE4NTg3NCwiZXhwIjoxNTg5MTg5NDc0LCJqdGkiOiJmZDIzZDkyMjA2Y2QwZThlMmJjYjI5NDZhZTZkMjk3NmVkMjIzOGU0In0.hVhsJjDf7PUCu2hiT6E0GpxuZl3aMoBQykSOxGpZSx-1sEXbSijO6frD_-Vo6U67FK51D-r6wiiaVd-LQyBG5W3SL4Xs_TkeEDsizTwi4a_kSIJ3FKz5wx_Y1rrM_gpZdjXs4VLUDJ3mnsPZqgmHQtbxMIUrNrwKtx54gdoJ4J9US7gynF-siWG7lU6zRoXxzP0Ry0DnSh1hdaiHxmJiGr8IF2FPqZk2LSPg6psuBOlqGQ05-Y4mwhCDr6ZwMVMbOZ_REGZcUgQlyhP9AQGtmiAOiyDYQfsHAIKYw-jiBQ_qr1_OTnJyUQYsCMh3JM06XKDkr5yhRiwboWjF25y9Bw"
 
-
-// client.verifyIdToken({ idToken: token, audience: CLIENT_ID })
-//    .then(response=>{
-//       console.log(response.payload)
-//    })
-//    .catch(err=>{
-//       console.log(err)
-//    })
-
+client.verifyIdToken({ idToken: token, audience: CLIENT_ID })
+   .then(response=>{
+      console.log(response.payload)
+   })
+   .catch(err=>{
+      console.log(err)
+   })
 
 
-const axios = require('axios')
 
-const clientId = 550965442521996
-const clientSecret = "14d014504f32f88ac3dd71fb0a3820ba"
+// const axios = require('axios')
 
-const accessTokenLink = appLink = `https://graph.facebook.com/oauth/access_token?client_id=${clientId}&client_secret=${clientSecret}&grant_type=client_credentials`
+// const clientId = 550965442521996
+// const clientSecret = "14d014504f32f88ac3dd71fb0a3820ba"
 
-let accessToken
+// const accessTokenLink = appLink = `https://graph.facebook.com/oauth/access_token?client_id=${clientId}&client_secret=${clientSecret}&grant_type=client_credentials`
 
-const userToken = 'EAAH1GaN8K4wBALbY0O07D4H0WBk1gqnVZCmZB6jtsSrrm7RAEkjv3jQK62qmdRbZA3SowwCfRqehW6YL2sZAZA3oMZCRL7sNt22wthhQP9bKf3LOJwmhN9uosvtRtsErA043AyNYPlmWBt4ZBVB9JFQPC39GPG3ChQeP4Cq8ORfT2ap5D22RbFn5weMBmPGqUBgwqGlSxVJxcWFZAyMqaOGKyaC5RVlN1xUZD'
+// let accessToken
 
-axios.get(accessTokenLink)  
-    .then(response=>{
-        console.log(response.data)
-        accessToken = response.data.access_token
-        const debugLink = `https://graph.facebook.com/debug_token?input_token=${userToken}&access_token=${accessToken}`
-        axios.get(debugLink)
-            .then(response=>{
-                console.log(response.data)
-                const user_id = response.data.data.user_id
-                console.log(user_id)
-                const userDetailsLink = `https://graph.facebook.com/${user_id}?fields=id,name,email,first_name,last_name,hometown&access_token=${userToken}`
-                //const userDetailsLink = `https://graph.facebook.com/v2.3/me?access_token=${userToken}&fields=name%2Cemail%2Cpicture&locale=en_US&method=get&pretty=0&sdk=joey&suppress_http_code=1`
-                axios.get(userDetailsLink)
-                    .then(response=>{
-                        console.log(response.data)
-                    })
-                    .catch(err=>{
-                        console.log(err)
-                    })
-            })
-            .catch(err=>{
-                console.log(err)
-            })
-    })
-    .catch(err=>{
-        console.log(err)
-    })
+// const userToken = 'EAAH1GaN8K4wBAAnbZA9dQeyD46svpv3Q32aShgma93aH896Dt786ZAK6n4vZAScP34YVsN5mN7Qf8UX0fOSaQ1WZCVQCU3w5uOaYZAl9s3ruEcmKUeDCJvcBAnXCPDsZBSR5ffO8ztDfQGvg0x340HL86AQeykDTXHSI1kQNOe5IByQ6yzAXREPPkdFAz3ftsgo95ZB4NcXXEefOLui3Lrx1nWiWPkEVH0ZD'
+
+// axios.get(accessTokenLink)  
+//     .then(response=>{
+//         console.log(response.data)
+//         accessToken = response.data.access_token
+//         const debugLink = `https://graph.facebook.com/debug_token?input_token=${userToken}&access_token=${accessToken}`
+//         axios.get(debugLink)
+//             .then(response=>{
+//                 console.log(response.data)
+//                 const user_id = response.data.data.user_id
+//                 console.log(user_id)
+//                 const userDetailsLink = `https://graph.facebook.com/${user_id}?fields=id,name,email,first_name,last_name,hometown&access_token=${userToken}`
+//                 //const userDetailsLink = `https://graph.facebook.com/v2.3/me?access_token=${userToken}&fields=name%2Cemail%2Cpicture&locale=en_US&method=get&pretty=0&sdk=joey&suppress_http_code=1`
+//                 axios.get(userDetailsLink)
+//                     .then(response=>{
+//                         console.log(response.data)
+//                     })
+//                     .catch(err=>{
+//                         console.log(err)
+//                     })
+//             })
+//             .catch(err=>{
+//                 console.log(err)
+//             })
+//     })
+//     .catch(err=>{
+//         console.log(err)
+//     })
 
  
  

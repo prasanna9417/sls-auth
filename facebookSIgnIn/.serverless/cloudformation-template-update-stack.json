@@ -214,7 +214,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/sls-auth-facebookSignIn/dev/1588584637517-2020-05-04T09:30:37.517Z/sls-auth-facebookSignIn.zip"
+          "S3Key": "serverless/sls-auth-facebookSignIn/dev/1589184663896-2020-05-11T08:11:03.896Z/sls-auth-facebookSignIn.zip"
         },
         "FunctionName": "sls-auth-facebookSignIn-dev-facebookSignIn-authorizer",
         "Handler": "s_facebookSignIn_authorizer.handler",
@@ -233,14 +233,14 @@
         "IamRoleLambdaExecution"
       ]
     },
-    "FacebookSignInDashauthorizerLambdaVersionoHreJYuXiJJAQQzzeeOBvqjdZIBeWWZdyPJ6Y9kjYA": {
+    "FacebookSignInDashauthorizerLambdaVersionwUtwhEjeGolKz28dDRFDKX7vahOG3qagqzpL5krQ": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "FacebookSignInDashauthorizerLambdaFunction"
         },
-        "CodeSha256": "rp7J52BR06Gv1qHwLkpSMx9UE9LAZOO2LMhJqQcrbF8="
+        "CodeSha256": "UkdkGx0wsYGuz6aV27Eb6JDTUYromA0h0DtZb9gmkxU="
       }
     },
     "FacebookSignInLambdaFunction": {
@@ -250,7 +250,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/sls-auth-facebookSignIn/dev/1588584637517-2020-05-04T09:30:37.517Z/sls-auth-facebookSignIn.zip"
+          "S3Key": "serverless/sls-auth-facebookSignIn/dev/1589184663896-2020-05-11T08:11:03.896Z/sls-auth-facebookSignIn.zip"
         },
         "FunctionName": "sls-auth-facebookSignIn-dev-facebookSignIn",
         "Handler": "s_facebookSignIn.handler",
@@ -269,14 +269,14 @@
         "IamRoleLambdaExecution"
       ]
     },
-    "FacebookSignInLambdaVersion4gPJrzoGZPDhXzPglshsIvRYdYRxQVxaZTYGS7dYPM": {
+    "FacebookSignInLambdaVersion9eVQktMbjloDl50sKP9PvaO3qB1w7fWpiumiKpGzQ": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "FacebookSignInLambdaFunction"
         },
-        "CodeSha256": "rp7J52BR06Gv1qHwLkpSMx9UE9LAZOO2LMhJqQcrbF8="
+        "CodeSha256": "UkdkGx0wsYGuz6aV27Eb6JDTUYromA0h0DtZb9gmkxU="
       }
     },
     "ApiGatewayResourceFacebooksignin": {
@@ -417,7 +417,7 @@
         "Type": "TOKEN"
       }
     },
-    "ApiGatewayDeployment1588584626872": {
+    "ApiGatewayDeployment1589184655134": {
       "Type": "AWS::ApiGateway::Deployment",
       "Properties": {
         "RestApiId": {
@@ -613,7 +613,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/sls-auth-facebookSignIn/dev/1588584637517-2020-05-04T09:30:37.517Z/custom-resources.zip"
+          "S3Key": "serverless/sls-auth-facebookSignIn/dev/1589184663896-2020-05-11T08:11:03.896Z/custom-resources.zip"
         },
         "FunctionName": "sls-auth-facebookSignIn-dev-custom-resource-apigw-cw-role",
         "Handler": "apiGatewayCloudWatchRole/handler.handler",
@@ -679,13 +679,13 @@
     "FacebookSignInDashauthorizerLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "FacebookSignInDashauthorizerLambdaVersionoHreJYuXiJJAQQzzeeOBvqjdZIBeWWZdyPJ6Y9kjYA"
+        "Ref": "FacebookSignInDashauthorizerLambdaVersionwUtwhEjeGolKz28dDRFDKX7vahOG3qagqzpL5krQ"
       }
     },
     "FacebookSignInLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "FacebookSignInLambdaVersion4gPJrzoGZPDhXzPglshsIvRYdYRxQVxaZTYGS7dYPM"
+        "Ref": "FacebookSignInLambdaVersion9eVQktMbjloDl50sKP9PvaO3qB1w7fWpiumiKpGzQ"
       }
     },
     "ServiceEndpoint": {

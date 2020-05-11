@@ -229,7 +229,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/sls-auth-verifyOTP/dev/1588445447688-2020-05-02T18:50:47.688Z/sls-auth-verifyOTP.zip"
+                "S3Key": "serverless/sls-auth-verifyOTP/dev/1589195025055-2020-05-11T11:03:45.055Z/sls-auth-verifyOTP.zip"
               },
               "FunctionName": "sls-auth-verifyOTP-dev-verifyotp",
               "Handler": "s_verifyotp.handler",
@@ -248,14 +248,14 @@
               "IamRoleLambdaExecution"
             ]
           },
-          "VerifyotpLambdaVersionUNlAt8lJcOFunaTI0XtIwTfa0d6M5BcKkQOv4VLoY": {
+          "VerifyotpLambdaVersionWB52CUHBTg4U7ZoMC95lYH06nz7VPMYv06mIESAE9o": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "VerifyotpLambdaFunction"
               },
-              "CodeSha256": "kvCoKkLGwuZoJaPSRmC41Vxxh3VBZBkwfODhPM3zgiM="
+              "CodeSha256": "1UsuvBYEb7dBUPM7OnlZbKkyrtJOV94xNmqyQ3MLLR4="
             }
           },
           "ApiGatewayResourceVerifyotp": {
@@ -358,7 +358,7 @@
               "MethodResponses": []
             }
           },
-          "ApiGatewayDeployment1588445440400": {
+          "ApiGatewayDeployment1589195017227": {
             "Type": "AWS::ApiGateway::Deployment",
             "Properties": {
               "RestApiId": {
@@ -517,7 +517,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/sls-auth-verifyOTP/dev/1588445447688-2020-05-02T18:50:47.688Z/custom-resources.zip"
+                "S3Key": "serverless/sls-auth-verifyOTP/dev/1589195025055-2020-05-11T11:03:45.055Z/custom-resources.zip"
               },
               "FunctionName": "sls-auth-verifyOTP-dev-custom-resource-apigw-cw-role",
               "Handler": "apiGatewayCloudWatchRole/handler.handler",
@@ -573,7 +573,7 @@
           "VerifyotpLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "VerifyotpLambdaVersionUNlAt8lJcOFunaTI0XtIwTfa0d6M5BcKkQOv4VLoY"
+              "Ref": "VerifyotpLambdaVersionWB52CUHBTg4U7ZoMC95lYH06nz7VPMYv06mIESAE9o"
             }
           },
           "ServiceEndpoint": {
@@ -716,7 +716,7 @@
         "timeout": 6,
         "runtime": "nodejs12.x",
         "vpc": {},
-        "versionLogicalId": "VerifyotpLambdaVersionUNlAt8lJcOFunaTI0XtIwTfa0d6M5BcKkQOv4VLoY"
+        "versionLogicalId": "VerifyotpLambdaVersionWB52CUHBTg4U7ZoMC95lYH06nz7VPMYv06mIESAE9o"
       }
     },
     "serviceFilename": "serverless.yml",
@@ -730,7 +730,7 @@
     "artifact": "/Users/prasannasingaravelu/Documents/serverless-auth/sls-auth/verifyOtp/.serverless/sls-auth-verifyOTP.zip"
   },
   "package": {
-    "artifactDirectoryName": "serverless/sls-auth-verifyOTP/dev/1588445447688-2020-05-02T18:50:47.688Z",
+    "artifactDirectoryName": "serverless/sls-auth-verifyOTP/dev/1589195025055-2020-05-11T11:03:45.055Z",
     "artifact": "sls-auth-verifyOTP.zip"
   }
 }

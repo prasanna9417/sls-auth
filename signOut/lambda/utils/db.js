@@ -63,13 +63,12 @@ module.exports.updateTokens = async(id,tokens)=>{
     return response;
 }
 
-module.exports.findByEmailId = async (email) => {
+module.exports.findById = async (id) => {
     const params = {
         TableName : table,
-        IndexName : "email-index",
-        KeyConditionExpression: "email = :email",
+        KeyConditionExpression: "id = :id",
         ExpressionAttributeValues: {
-            ":email": email
+            ":id": id
         }
     
     };

@@ -214,7 +214,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/sls-auth-googleSignIn/dev/1588437387925-2020-05-02T16:36:27.925Z/sls-auth-googleSignIn.zip"
+          "S3Key": "serverless/sls-auth-googleSignIn/dev/1589187211113-2020-05-11T08:53:31.113Z/sls-auth-googleSignIn.zip"
         },
         "FunctionName": "sls-auth-googleSignIn-dev-googleSignIn-authorizer",
         "Handler": "s_googleSignIn_authorizer.handler",
@@ -233,14 +233,14 @@
         "IamRoleLambdaExecution"
       ]
     },
-    "GoogleSignInDashauthorizerLambdaVersionPqTqtmhkbBPQ2RGFvbHNoGuoR9EhgnRdv0EUwgg5qo": {
+    "GoogleSignInDashauthorizerLambdaVersiont9QII6JRdQ6bjqnoPk9lcaNWBKFum7QusPRAYDEMRE": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "GoogleSignInDashauthorizerLambdaFunction"
         },
-        "CodeSha256": "zPCa+Hr+K37N0H180M/+HG/hj/9RV4RFAgy911mwYFw="
+        "CodeSha256": "w+RLT9ltMhGsICrx9QoqoPkCZXa8N6aovforMOZBJuM="
       }
     },
     "GoogleSignInLambdaFunction": {
@@ -250,7 +250,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/sls-auth-googleSignIn/dev/1588437387925-2020-05-02T16:36:27.925Z/sls-auth-googleSignIn.zip"
+          "S3Key": "serverless/sls-auth-googleSignIn/dev/1589187211113-2020-05-11T08:53:31.113Z/sls-auth-googleSignIn.zip"
         },
         "FunctionName": "sls-auth-googleSignIn-dev-googleSignIn",
         "Handler": "s_googleSignIn.handler",
@@ -269,14 +269,14 @@
         "IamRoleLambdaExecution"
       ]
     },
-    "GoogleSignInLambdaVersionCh7wNVBMaEFSYOfsfck8CQ6nJtZp3vsHlaphYEA8": {
+    "GoogleSignInLambdaVersionohjuXjwAUFQlv2lzBWNf06zyZP0g8qz8AqDkc2DONc": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "GoogleSignInLambdaFunction"
         },
-        "CodeSha256": "zPCa+Hr+K37N0H180M/+HG/hj/9RV4RFAgy911mwYFw="
+        "CodeSha256": "w+RLT9ltMhGsICrx9QoqoPkCZXa8N6aovforMOZBJuM="
       }
     },
     "ApiGatewayResourceGooglesignin": {
@@ -417,7 +417,7 @@
         "Type": "TOKEN"
       }
     },
-    "ApiGatewayDeployment1588437377146": {
+    "ApiGatewayDeployment1589187203337": {
       "Type": "AWS::ApiGateway::Deployment",
       "Properties": {
         "RestApiId": {
@@ -613,7 +613,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/sls-auth-googleSignIn/dev/1588437387925-2020-05-02T16:36:27.925Z/custom-resources.zip"
+          "S3Key": "serverless/sls-auth-googleSignIn/dev/1589187211113-2020-05-11T08:53:31.113Z/custom-resources.zip"
         },
         "FunctionName": "sls-auth-googleSignIn-dev-custom-resource-apigw-cw-role",
         "Handler": "apiGatewayCloudWatchRole/handler.handler",
@@ -679,13 +679,13 @@
     "GoogleSignInDashauthorizerLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "GoogleSignInDashauthorizerLambdaVersionPqTqtmhkbBPQ2RGFvbHNoGuoR9EhgnRdv0EUwgg5qo"
+        "Ref": "GoogleSignInDashauthorizerLambdaVersiont9QII6JRdQ6bjqnoPk9lcaNWBKFum7QusPRAYDEMRE"
       }
     },
     "GoogleSignInLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "GoogleSignInLambdaVersionCh7wNVBMaEFSYOfsfck8CQ6nJtZp3vsHlaphYEA8"
+        "Ref": "GoogleSignInLambdaVersionohjuXjwAUFQlv2lzBWNf06zyZP0g8qz8AqDkc2DONc"
       }
     },
     "ServiceEndpoint": {
